@@ -1,2 +1,2 @@
 # python
-All things related to python
+Basic python hello world webpage
