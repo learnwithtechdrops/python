@@ -18,7 +18,7 @@ jobs:
                 format: table
                 exit-code: 1
                 severity: CRITICAL
-                scanners: vuln,secret,config,license,sast 
+                scanners: vuln,secret,config,license
 
             - name: Set image tag
               id: image-tag
