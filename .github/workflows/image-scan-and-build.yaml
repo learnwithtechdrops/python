@@ -22,7 +22,7 @@ jobs:
 
             - name: Set image tag
               id: image-tag
-              run: echo "IMAGE_TAG=my-python-app:$(date +%s)" >> $GITHUB_ENV
+              run: echo "IMAGE_TAG=ttl.sh/my-python-app-$(date +%s):1h" >> $GITHUB_ENV
 
             - name: Build Docker Image
               run: |
