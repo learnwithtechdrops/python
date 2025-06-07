@@ -1,0 +1,41 @@
+name : Docker image scan and build
+
+on:
+    pull_request:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout the repo
+              uses: actions/checkout@v4
+
+            - name: Install Trivy
+              uses: aquasecurity/trivy-action@v0.31.0
+              with:
+                scan-type: fs
+                scan-ref: .
+                format: table
+                exit-code: 1
+                severity: CRITICAL
+                scanners: vuln,secret,config,license,sast 
+
+            - name: Set image tag
+              id: image-tag
+              run: echo "IMAGE_TAG=my-python-app:$(date +%s)" >> $GITHUB_ENV
+
+            - name: Build Docker Image
+              run: |
+                docker build -t $IMAGE_TAG .
+
+            - name: Scan Docker Image with Trivy
+              uses: aquasecurity/trivy-action@v0.31.0
+              with:
+                scan-type: image
+                image-ref: $IMAGE_TAG
+                format: table
+                exit-code: 1
+                severity: CRITICAL
+
+            - name: Push Docker Image
+              run: docker push $IMAGE_TAG
