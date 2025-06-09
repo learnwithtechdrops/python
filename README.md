@@ -1,2 +1,2 @@
 # python
-All things related to python
+Use case to demonstrate the use of Trivy
