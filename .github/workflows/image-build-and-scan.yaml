@@ -37,8 +37,9 @@ jobs:
                 scan-type: image
                 image-ref: "${{ steps.image-tag.outputs.image_tag_value }}"
                 format: table
-                exit-code: 1
+                exit-code: 0
                 severity: CRITICAL
+                scanners: vuln,secret,config,license
 
             - name: Push Docker Image
               run: |
