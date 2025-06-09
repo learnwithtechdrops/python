@@ -1,6 +1,6 @@
 #FROM python:3.11-alpine
 #FROM python:3.9.23-slim-bookworm
-FROM python:3.14-rc-slim-bullseye
+FROM python:3.14-rc-alpine3.22
 
 WORKDIR /app
 
