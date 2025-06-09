@@ -1,3 +1,2 @@
 # python
-This repo has individual folders for different usecases
-testing the first usecase with container port 5000 
+Use case to demonstrate the use of Trivy
