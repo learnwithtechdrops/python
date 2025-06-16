@@ -1,4 +1,4 @@
-FROM python:3.14-rc-bookworm
+FROM python:3.14-rc-alpine3.22
 
 WORKDIR /app
 
